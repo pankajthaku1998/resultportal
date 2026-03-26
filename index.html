@@ -7,8 +7,8 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     /* Custom Scrollbar and Loader */
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar { height: 6px; width: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
     ::-webkit-scrollbar-thumb { background: #004085; border-radius: 4px; } /* Dark Blue scrollbar */
     .loader { border: 4px solid #e2e8f0; border-top: 4px solid #004085; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; }
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
@@ -18,6 +18,19 @@
       .print-bg-blue { background-color: #eff6ff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
       .print-text-blue { color: #1e3a8a !important; }
     }
+    footer {
+    text-align: center; /* Centers text and inline elements */
+    padding: 30px;
+    background-color: #f4f4f4;
+}.footer-content {
+    width: 100%; /* Requires a specific width or max-width */
+    margin: 0 auto; /* Centers the block horizontally */
+    /* Other styles for the content */
+}
+
+footer {
+    background-color: #f4f4f4;
+}
   </style>
 </head>
 <body class="bg-[#f4f7f6] text-gray-800 font-sans antialiased min-h-screen flex flex-col relative">
@@ -29,23 +42,22 @@
   </div>
 
   <!-- Compact Top Navigation Bar -->
-  <nav class="bg-white py-3 px-4 md:px-12 flex justify-between items-center shadow-sm w-full fixed top-0 z-10 print:hidden">
-    <div class="flex items-center gap-2 sm:gap-4 cursor-pointer" onclick="window.location.href='http://davntpcjamthal.org'">
-      <img src="./image (1).png" alt="DAV Logo" class="h-10 sm:h-12 md:h-14 object-contain" onerror="this.src='https://upload.wikimedia.org/wikipedia/en/thumb/3/3d/DAV_College_Managing_Committee_logo.svg/220px-DAV_College_Managing_Committee_logo.svg.png'">
-      <div class="flex flex-col">
-        <span class="text-[#004085] font-extrabold text-[11px] sm:text-sm md:text-lg tracking-wide uppercase leading-tight">DAV Public School</span>
-        <span class="text-[#004085] font-semibold text-[8px] sm:text-[10px] md:text-xs tracking-widest uppercase leading-tight">NTPC Township, Jamthal</span>
+  <nav class="bg-white py-3 px-4 md:px-8 lg:px-12 flex justify-between items-center shadow-sm w-full fixed top-0 z-30 print:hidden">
+    <div class="flex items-center gap-2 sm:gap-4 cursor-pointer w-2/3 sm:w-auto" onclick="window.location.href='http://davntpcjamthal.org'">
+      <img src="./image (1).png" alt="DAV Logo" class="h-10 sm:h-12 md:h-14 object-contain flex-shrink-0" onerror="this.src='https://upload.wikimedia.org/wikipedia/en/thumb/3/3d/DAV_College_Managing_Committee_logo.svg/220px-DAV_College_Managing_Committee_logo.svg.png'">
+      <div class="flex flex-col justify-center">
+        <span class="text-[#004085] font-extrabold text-[12px] sm:text-sm md:text-lg tracking-tight sm:tracking-wide uppercase leading-tight line-clamp-2 sm:line-clamp-1">DAV Public School, NTPC Township, Jamthal</span>
       </div>
     </div>
     
     <!-- Desktop & Mobile Nav Links -->
-    <div id="nav-links" class="flex space-x-3 sm:space-x-6 text-[#1a2b4c] font-bold text-xs sm:text-sm items-center">
-      <a id="home-btn" href="http://davntpcjamthal.org" class="flex items-center gap-1.5 hover:text-[#0056b3] transition" title="Home">
-        <svg class="w-5 h-5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg> 
+    <div id="nav-links" class="flex space-x-4 sm:space-x-6 text-[#1a2b4c] font-bold text-xs sm:text-sm items-center flex-shrink-0">
+      <a id="home-btn" href="http://davntpcjamthal.org" class="flex items-center gap-1.5 hover:text-[#0056b3] transition p-1" title="Home">
+        <svg class="w-6 h-6 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg> 
         <span class="hidden sm:inline">Home</span>
       </a>
-      <button id="nav-mode-toggle" onclick="setLoginRole('teacher'); switchView('login-view')" class="flex items-center gap-1.5 hover:text-[#0056b3] transition" title="Teacher Login">
-        <svg class="w-5 h-5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> 
+      <button id="nav-mode-toggle" onclick="setLoginRole('teacher'); switchView('login-view')" class="flex items-center gap-1.5 hover:text-[#0056b3] transition p-1" title="Teacher Login">
+        <svg class="w-6 h-6 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> 
         <span class="hidden sm:inline">Teacher Login</span>
       </button>
       <button id="logout-btn" onclick="logout()" class="hidden flex items-center gap-1 text-red-600 hover:text-red-800 transition px-2 py-1.5 sm:px-3 border border-red-200 rounded-md bg-red-50" title="Logout">
@@ -60,10 +72,10 @@
     
     <!-- 1. LOGIN VIEW -->
     <div id="login-view" class="w-full flex items-center justify-center print:hidden my-auto">
-      <div class="bg-white rounded-[1.5rem] shadow-[0_8px_30px_rgb(0,0,0,0.06)] p-8 md:p-12 w-full max-w-[480px]">
+      <div class="bg-white rounded-[1.5rem] shadow-[0_8px_30px_rgb(0,0,0,0.06)] p-6 sm:p-8 md:p-12 w-full max-w-[480px]">
         
-        <div class="text-center mb-10">
-          <h2 id="form-title" class="text-[32px] font-extrabold text-[#0a2540]">Result Portal</h2>
+        <div class="text-center mb-8 sm:mb-10">
+          <h2 id="form-title" class="text-2xl sm:text-[32px] font-extrabold text-[#0a2540]">Result Portal</h2>
         </div>
 
         <form id="login-form" onsubmit="handleLogin(event)">
@@ -72,13 +84,13 @@
             <input type="text" id="username" placeholder="Enter your roll number" required class="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bedcfa] focus:border-[#004085] outline-none transition text-gray-800 placeholder-gray-400">
           </div>
           
-          <div class="mb-10 text-left">
+          <div class="mb-8 sm:mb-10 text-left">
             <label class="block text-gray-700 text-sm font-medium mb-2">Password:</label>
             <input type="password" id="password" required class="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#bedcfa] focus:border-[#004085] outline-none transition text-gray-800">
           </div>
           
           <div class="text-center">
-            <button type="submit" id="submit-btn" class="bg-[#004085] text-white font-medium py-2.5 px-14 rounded-full hover:bg-[#002752] transition duration-200 text-[15px]">Search</button>
+            <button type="submit" id="submit-btn" class="w-full sm:w-auto bg-[#004085] text-white font-medium py-3 sm:py-2.5 px-8 sm:px-14 rounded-full hover:bg-[#002752] transition duration-200 text-[15px]">Search</button>
           </div>
           <p id="login-error" class="text-red-600 font-medium text-sm mt-5 text-center hidden"></p>
         </form>
@@ -89,28 +101,29 @@
     <div id="teacher-view" class="hidden print:hidden w-full max-w-7xl mx-auto">
       <div class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
         <!-- Dashboard Header -->
-        <div class="bg-[#004085] px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <h2 class="text-xl font-bold text-white flex items-center gap-2">
+        <div class="bg-[#004085] px-4 sm:px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <h2 class="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
             Student Roster
           </h2>
           <!-- Filter by class drop-down -->
-          <div class="flex items-center gap-3">
-            <label class="text-blue-100 text-sm font-medium">Filter:</label>
-            <select id="class-filter" onchange="filterStudents()" class="p-2 border-none rounded-lg text-sm outline-none bg-white text-blue-900 font-bold cursor-pointer shadow-sm w-48">
+          <div class="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
+            <label class="text-blue-100 text-sm font-medium whitespace-nowrap">Filter:</label>
+            <select id="class-filter" onchange="filterStudents()" class="p-2 border-none rounded-lg text-sm outline-none bg-white text-blue-900 font-bold cursor-pointer shadow-sm w-full sm:w-48">
               <option value="" disabled selected>Select a Class</option>
             </select>
           </div>
         </div>
         
-        <div class="overflow-x-auto p-4">
-          <table class="min-w-full text-left border-collapse">
+        <!-- Table container with smooth horizontal scrolling -->
+        <div class="overflow-x-auto p-0 sm:p-4">
+          <table class="w-full text-left border-collapse min-w-[600px]">
             <thead>
-              <tr class="bg-slate-100 text-[#004085] uppercase text-xs font-bold tracking-wider">
-                <th class="py-4 px-6 rounded-tl-lg">Roll No</th>
-                <th class="py-4 px-6">Student Name</th>
-                <th class="py-4 px-6">Class</th>
-                <th class="py-4 px-6 text-center rounded-tr-lg">Action</th>
+              <tr class="bg-slate-100 text-[#004085] uppercase text-xs font-bold tracking-wider border-b border-gray-200 sm:border-none">
+                <th class="py-3 sm:py-4 px-4 sm:px-6 rounded-tl-none sm:rounded-tl-lg whitespace-nowrap">Roll No</th>
+                <th class="py-3 sm:py-4 px-4 sm:px-6 whitespace-nowrap">Student Name</th>
+                <th class="py-3 sm:py-4 px-4 sm:px-6 whitespace-nowrap">Class</th>
+                <th class="py-3 sm:py-4 px-4 sm:px-6 text-center rounded-tr-none sm:rounded-tr-lg whitespace-nowrap">Action</th>
               </tr>
             </thead>
             <tbody id="student-list" class="text-gray-700 text-sm font-medium divide-y divide-gray-100">
@@ -122,41 +135,41 @@
     </div>
 
     <!-- TEACHER EDIT MARKS MODAL -->
-    <div id="edit-modal" class="fixed inset-0 bg-[#004085]/60 z-40 hidden flex items-center justify-center p-4 backdrop-blur-sm print:hidden">
-      <div class="bg-white rounded-2xl shadow-2xl w-full max-w-6xl max-h-[90vh] overflow-hidden flex flex-col border border-gray-200">
+    <div id="edit-modal" class="fixed inset-0 bg-[#004085]/70 z-40 hidden flex items-center justify-center p-0 sm:p-4 backdrop-blur-sm print:hidden">
+      <div class="bg-white rounded-none sm:rounded-2xl shadow-2xl w-full h-full sm:h-auto max-w-6xl max-h-[100vh] sm:max-h-[90vh] overflow-hidden flex flex-col border-0 sm:border border-gray-200">
         
         <!-- Modal Header -->
-        <div class="bg-slate-50 px-8 py-5 flex justify-between items-center border-b border-gray-200">
+        <div class="bg-slate-50 px-4 sm:px-8 py-4 flex justify-between items-center border-b border-gray-200 sticky top-0 z-10">
           <div>
-            <h2 class="text-2xl font-black text-[#004085] uppercase tracking-wide">Academic Record Entry</h2>
-            <p class="text-gray-500 mt-1 font-medium">Student: <span id="edit-student-name" class="text-blue-700 font-bold"></span> &nbsp;|&nbsp; Class: <span id="edit-student-class" class="text-blue-700 font-bold"></span></p>
+            <h2 class="text-lg sm:text-2xl font-black text-[#004085] uppercase tracking-wide">Record Entry</h2>
+            <p class="text-gray-500 mt-0.5 sm:mt-1 text-xs sm:text-sm font-medium">Student: <span id="edit-student-name" class="text-blue-700 font-bold"></span> &nbsp;|&nbsp; Class: <span id="edit-student-class" class="text-blue-700 font-bold"></span></p>
           </div>
-          <button onclick="closeEditModal()" class="text-gray-400 hover:text-red-600 transition bg-white border border-gray-200 hover:border-red-200 rounded-full w-10 h-10 flex items-center justify-center shadow-sm">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          <button onclick="closeEditModal()" class="text-gray-400 hover:text-red-600 transition bg-white border border-gray-200 hover:border-red-200 rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center shadow-sm flex-shrink-0">
+            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
           </button>
         </div>
         
         <!-- Modal Body -->
-        <div class="p-8 overflow-y-auto bg-white">
+        <div class="p-4 sm:p-8 overflow-y-auto bg-white flex-grow">
           <form id="edit-marks-form" onsubmit="saveMarks(event)">
             <input type="hidden" id="edit-row-index">
             <input type="hidden" id="edit-sheet-name">
             <input type="hidden" id="edit-password">
             <input type="hidden" id="edit-roll-no">
             
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
               <!-- Term 1 Section -->
-              <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 relative overflow-hidden">
+              <div class="bg-slate-50 p-4 sm:p-6 rounded-xl border border-slate-200 relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-1 h-full bg-blue-500"></div>
-                <h3 class="font-extrabold text-lg mb-4 text-[#004085] uppercase tracking-widest border-b border-slate-200 pb-2">Term 1</h3>
-                <div class="overflow-x-auto">
-                  <table class="w-full text-sm text-left">
+                <h3 class="font-extrabold text-base sm:text-lg mb-4 text-[#004085] uppercase tracking-widest border-b border-slate-200 pb-2">Term 1</h3>
+                <div class="overflow-x-auto pb-2">
+                  <table class="w-full text-xs sm:text-sm text-left min-w-[320px]">
                     <thead>
-                      <tr class="text-gray-500 uppercase text-xs tracking-wider">
-                        <th class="pb-3 font-bold">Subject</th>
-                        <th class="pb-3 text-center font-bold">PT1</th>
-                        <th class="pb-3 text-center font-bold">Half Yearly</th>
-                        <th class="pb-3 text-center font-bold">IA1</th>
+                      <tr class="text-gray-500 uppercase text-[10px] sm:text-xs tracking-wider">
+                        <th class="pb-2 font-bold whitespace-nowrap">Subject</th>
+                        <th class="pb-2 text-center font-bold whitespace-nowrap">PT1</th>
+                        <th class="pb-2 text-center font-bold whitespace-nowrap">Half Yrly</th>
+                        <th class="pb-2 text-center font-bold whitespace-nowrap">IA1</th>
                       </tr>
                     </thead>
                     <tbody id="t1-edit-body" class="divide-y divide-slate-100">
@@ -164,24 +177,24 @@
                     </tbody>
                   </table>
                 </div>
-                <div class="mt-6 pt-4 border-t border-slate-200 flex items-center justify-end bg-slate-100 p-3 rounded-lg">
-                  <label class="font-bold mr-3 text-[#004085] uppercase text-xs tracking-wider">Term 1 Total:</label>
-                  <input type="number" id="t1_total" class="w-28 p-2 border border-slate-300 rounded bg-slate-200 text-slate-600 font-bold cursor-not-allowed outline-none text-center" readonly title="Calculated automatically in Google Sheets">
+                <div class="mt-4 pt-4 border-t border-slate-200 flex items-center justify-between sm:justify-end bg-slate-100 p-2 sm:p-3 rounded-lg">
+                  <label class="font-bold mr-3 text-[#004085] uppercase text-[10px] sm:text-xs tracking-wider">T1 Total:</label>
+                  <input type="number" id="t1_total" class="w-20 sm:w-28 p-1.5 sm:p-2 border border-slate-300 rounded bg-slate-200 text-slate-600 font-bold cursor-not-allowed outline-none text-center text-sm" readonly title="Calculated automatically in Google Sheets">
                 </div>
               </div>
 
               <!-- Term 2 Section -->
-              <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 relative overflow-hidden">
+              <div class="bg-slate-50 p-4 sm:p-6 rounded-xl border border-slate-200 relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-1 h-full bg-indigo-500"></div>
-                <h3 class="font-extrabold text-lg mb-4 text-indigo-900 uppercase tracking-widest border-b border-slate-200 pb-2">Term 2</h3>
-                <div class="overflow-x-auto">
-                  <table class="w-full text-sm text-left">
+                <h3 class="font-extrabold text-base sm:text-lg mb-4 text-indigo-900 uppercase tracking-widest border-b border-slate-200 pb-2">Term 2</h3>
+                <div class="overflow-x-auto pb-2">
+                  <table class="w-full text-xs sm:text-sm text-left min-w-[320px]">
                     <thead>
-                      <tr class="text-gray-500 uppercase text-xs tracking-wider">
-                        <th class="pb-3 font-bold">Subject</th>
-                        <th class="pb-3 text-center font-bold">PT2</th>
-                        <th class="pb-3 text-center font-bold">Annual</th>
-                        <th class="pb-3 text-center font-bold">IA2</th>
+                      <tr class="text-gray-500 uppercase text-[10px] sm:text-xs tracking-wider">
+                        <th class="pb-2 font-bold whitespace-nowrap">Subject</th>
+                        <th class="pb-2 text-center font-bold whitespace-nowrap">PT2</th>
+                        <th class="pb-2 text-center font-bold whitespace-nowrap">Annual</th>
+                        <th class="pb-2 text-center font-bold whitespace-nowrap">IA2</th>
                       </tr>
                     </thead>
                     <tbody id="t2-edit-body" class="divide-y divide-slate-100">
@@ -189,27 +202,27 @@
                     </tbody>
                   </table>
                 </div>
-                <div class="mt-6 pt-4 border-t border-slate-200 flex items-center justify-end bg-slate-100 p-3 rounded-lg">
-                  <label class="font-bold mr-3 text-indigo-900 uppercase text-xs tracking-wider">Term 2 Total:</label>
-                  <input type="number" id="t2_total" class="w-28 p-2 border border-slate-300 rounded bg-slate-200 text-slate-600 font-bold cursor-not-allowed outline-none text-center" readonly title="Calculated automatically in Google Sheets">
+                <div class="mt-4 pt-4 border-t border-slate-200 flex items-center justify-between sm:justify-end bg-slate-100 p-2 sm:p-3 rounded-lg">
+                  <label class="font-bold mr-3 text-indigo-900 uppercase text-[10px] sm:text-xs tracking-wider">T2 Total:</label>
+                  <input type="number" id="t2_total" class="w-20 sm:w-28 p-1.5 sm:p-2 border border-slate-300 rounded bg-slate-200 text-slate-600 font-bold cursor-not-allowed outline-none text-center text-sm" readonly title="Calculated automatically in Google Sheets">
                 </div>
               </div>
             </div>
 
             <!-- Overall Section -->
-            <div class="mt-8 p-6 bg-[#004085] rounded-xl flex flex-col sm:flex-row gap-6 items-center shadow-inner">
-              <div class="flex gap-6">
-                <div class="bg-blue-800 p-3 rounded-lg border border-blue-700">
-                  <label class="font-bold text-blue-100 uppercase text-xs tracking-wider block mb-1">Overall %</label>
-                  <input type="text" id="percentage" class="w-24 p-2 border-none rounded bg-blue-900 text-white cursor-not-allowed outline-none font-black text-center" readonly title="Calculated automatically in Google Sheets">
+            <div class="mt-6 sm:mt-8 p-4 sm:p-6 bg-[#004085] rounded-xl flex flex-col sm:flex-row gap-4 sm:gap-6 items-center shadow-inner">
+              <div class="flex gap-4 sm:gap-6 w-full sm:w-auto">
+                <div class="bg-blue-800 p-2 sm:p-3 rounded-lg border border-blue-700 flex-1 sm:flex-none text-center">
+                  <label class="font-bold text-blue-100 uppercase text-[10px] sm:text-xs tracking-wider block mb-1">Overall %</label>
+                  <input type="text" id="percentage" class="w-full sm:w-24 p-1.5 sm:p-2 border-none rounded bg-blue-900 text-white cursor-not-allowed outline-none font-black text-center text-sm sm:text-base" readonly title="Calculated automatically in Google Sheets">
                 </div>
-                <div class="bg-blue-800 p-3 rounded-lg border border-blue-700">
-                  <label class="font-bold text-blue-100 uppercase text-xs tracking-wider block mb-1">Final Grade</label>
-                  <input type="text" id="grade" class="w-24 p-2 border-none rounded bg-blue-900 text-yellow-400 cursor-not-allowed outline-none font-black text-center uppercase" readonly title="Calculated automatically in Google Sheets">
+                <div class="bg-blue-800 p-2 sm:p-3 rounded-lg border border-blue-700 flex-1 sm:flex-none text-center">
+                  <label class="font-bold text-blue-100 uppercase text-[10px] sm:text-xs tracking-wider block mb-1">Final Grade</label>
+                  <input type="text" id="grade" class="w-full sm:w-24 p-1.5 sm:p-2 border-none rounded bg-blue-900 text-yellow-400 cursor-not-allowed outline-none font-black text-center uppercase text-sm sm:text-base" readonly title="Calculated automatically in Google Sheets">
                 </div>
               </div>
-              <div class="flex-grow text-right w-full sm:w-auto mt-4 sm:mt-0">
-                <button type="submit" class="w-full sm:w-auto bg-white text-[#004085] px-8 py-4 rounded-lg shadow-lg hover:bg-blue-50 transition font-black uppercase tracking-widest text-sm">Submit Marks to Sheet</button>
+              <div class="flex-grow w-full sm:w-auto sm:text-right mt-2 sm:mt-0">
+                <button type="submit" class="w-full bg-white text-[#004085] px-6 sm:px-8 py-3 sm:py-4 rounded-lg shadow-lg hover:bg-blue-50 transition font-black uppercase tracking-widest text-xs sm:text-sm">Submit Marks</button>
               </div>
             </div>
           </form>
@@ -218,49 +231,52 @@
     </div>
 
     <!-- 3. STUDENT REPORT CARD VIEW -->
-    <div id="student-view" class="hidden max-w-5xl mx-auto w-full">
-      <div class="bg-white p-8 md:p-12 rounded-2xl shadow-2xl border border-gray-200 relative print:shadow-none print:border-none print:p-0 print:bg-white">
-
+    <div id="student-view" class="hidden max-w-5xl mx-auto w-full px-2 sm:px-0">
+      <div class="bg-white p-4 sm:p-8 md:p-12 rounded-2xl shadow-2xl border border-gray-200 relative print:shadow-none print:border-none print:p-0 print:bg-white overflow-hidden">
+        
         <!-- Student Details Strip -->
-        <div class="flex flex-wrap justify-between items-center bg-blue-50 p-5 rounded-lg mb-10 border border-blue-100 print-bg-blue print:border-2 print:border-blue-900 shadow-sm">
-          <div class="w-full md:w-auto mb-4 md:mb-0">
-            <p class="text-xs font-bold text-blue-800 uppercase tracking-widest mb-1 print-text-blue">Student Name</p>
-            <p id="rc-name" class="text-xl md:text-2xl font-black text-gray-900 uppercase print-text-blue"></p>
+        <div class="flex flex-col sm:flex-row flex-wrap justify-between items-center bg-blue-50 p-4 sm:p-5 rounded-lg mb-8 sm:mb-10 border border-blue-100 print-bg-blue print:border-2 print:border-blue-900 shadow-sm gap-4 sm:gap-0">
+          <div class="w-full sm:w-auto text-center sm:text-left">
+            <p class="text-[10px] sm:text-xs font-bold text-blue-800 uppercase tracking-widest mb-0.5 sm:mb-1 print-text-blue">Student Name</p>
+            <p id="rc-name" class="text-lg sm:text-xl md:text-2xl font-black text-gray-900 uppercase print-text-blue break-words"></p>
           </div>
-          <div class="w-1/2 md:w-auto text-left md:text-center border-l-0 md:border-l-2 border-blue-200 pl-0 md:pl-6">
-            <p class="text-xs font-bold text-blue-800 uppercase tracking-widest mb-1 print-text-blue">Roll No</p>
-            <p id="rc-roll" class="text-xl font-black text-gray-900 print-text-blue"></p>
-          </div>
-          <div class="w-1/2 md:w-auto text-right border-l-2 border-blue-200 pl-6">
-            <p class="text-xs font-bold text-blue-800 uppercase tracking-widest mb-1 print-text-blue">Class</p>
-            <p id="rc-class" class="text-xl font-black text-gray-900 uppercase print-text-blue"></p>
+          
+          <div class="flex w-full sm:w-auto justify-center sm:justify-end border-t sm:border-t-0 border-blue-200 pt-3 sm:pt-0">
+            <div class="w-1/2 sm:w-auto text-center border-r sm:border-r-0 sm:border-l-2 border-blue-200 pr-2 sm:pr-0 sm:pl-6">
+              <p class="text-[10px] sm:text-xs font-bold text-blue-800 uppercase tracking-widest mb-0.5 sm:mb-1 print-text-blue">Roll No</p>
+              <p id="rc-roll" class="text-base sm:text-xl font-black text-gray-900 print-text-blue"></p>
+            </div>
+            <div class="w-1/2 sm:w-auto text-center sm:text-right border-blue-200 pl-2 sm:pl-6 sm:border-l-2">
+              <p class="text-[10px] sm:text-xs font-bold text-blue-800 uppercase tracking-widest mb-0.5 sm:mb-1 print-text-blue">Class</p>
+              <p id="rc-class" class="text-base sm:text-xl font-black text-gray-900 uppercase print-text-blue"></p>
+            </div>
           </div>
         </div>
 
         <!-- Tables Container -->
-        <div class="grid grid-cols-1 gap-10 print:gap-8">
+        <div class="grid grid-cols-1 gap-8 sm:gap-10 print:gap-8">
           
           <!-- Term 1 Table -->
           <div>
-            <h3 class="text-lg font-black text-[#004085] mb-3 uppercase tracking-widest flex items-center print-text-blue">
-              <span class="bg-[#004085] text-white w-6 h-6 rounded-full inline-flex items-center justify-center mr-2 text-sm print-bg-blue print-text-blue print:border print:border-blue-900">1</span> 
+            <h3 class="text-base sm:text-lg font-black text-[#004085] mb-3 uppercase tracking-widest flex items-center print-text-blue">
+              <span class="bg-[#004085] text-white w-5 h-5 sm:w-6 sm:h-6 rounded-full inline-flex items-center justify-center mr-2 text-xs sm:text-sm print-bg-blue print-text-blue print:border print:border-blue-900">1</span> 
               Term I Performance
             </h3>
-            <div class="overflow-hidden rounded-lg border border-slate-300 print:border-2 print-border">
-              <table class="w-full text-sm border-collapse">
+            <div class="overflow-x-auto rounded-lg border border-slate-300 print:border-2 print-border">
+              <table class="w-full text-xs sm:text-sm border-collapse min-w-[450px]">
                 <thead class="bg-slate-100 print:bg-slate-100 border-b border-slate-300">
                   <tr>
-                    <th class="p-3 text-left font-bold text-slate-700 uppercase tracking-wider border-r border-slate-300">Subjects</th>
-                    <th class="p-3 text-center font-bold text-slate-700 uppercase tracking-wider border-r border-slate-300">Periodic Test 1</th>
-                    <th class="p-3 text-center font-bold text-slate-700 uppercase tracking-wider border-r border-slate-300">Half Yearly</th>
-                    <th class="p-3 text-center font-bold text-slate-700 uppercase tracking-wider">Int. Assess 1</th>
+                    <th class="p-2 sm:p-3 text-left font-bold text-slate-700 uppercase tracking-wider border-r border-slate-300 whitespace-nowrap">Scholastic Areas</th>
+                    <th class="p-2 sm:p-3 text-center font-bold text-slate-700 uppercase tracking-wider border-r border-slate-300 whitespace-nowrap">Periodic Test 1</th>
+                    <th class="p-2 sm:p-3 text-center font-bold text-slate-700 uppercase tracking-wider border-r border-slate-300 whitespace-nowrap">Half Yearly</th>
+                    <th class="p-2 sm:p-3 text-center font-bold text-slate-700 uppercase tracking-wider whitespace-nowrap">Int. Assess 1</th>
                   </tr>
                 </thead>
                 <tbody id="rc-t1-body" class="divide-y divide-slate-200 font-medium text-slate-800"></tbody>
                 <tfoot>
                   <tr class="bg-slate-50 font-black text-[#004085] print-text-blue border-t-2 border-slate-300">
-                    <td class="p-3 uppercase tracking-wider border-r border-slate-300 text-right">Term 1 %</td>
-                    <td colspan="3" class="p-3 text-center text-lg" id="rc-t1-total"></td>
+                    <td class="p-2 sm:p-3 uppercase tracking-wider border-r border-slate-300 text-right text-[10px] sm:text-sm">Term 1 Total Score</td>
+                    <td colspan="3" class="p-2 sm:p-3 text-center text-base sm:text-lg" id="rc-t1-total"></td>
                   </tr>
                 </tfoot>
               </table>
@@ -269,25 +285,25 @@
 
           <!-- Term 2 Table -->
           <div>
-            <h3 class="text-lg font-black text-[#004085] mb-3 uppercase tracking-widest flex items-center print-text-blue">
-              <span class="bg-[#004085] text-white w-6 h-6 rounded-full inline-flex items-center justify-center mr-2 text-sm print-bg-blue print-text-blue print:border print:border-blue-900">2</span> 
+            <h3 class="text-base sm:text-lg font-black text-[#004085] mb-3 uppercase tracking-widest flex items-center print-text-blue">
+              <span class="bg-[#004085] text-white w-5 h-5 sm:w-6 sm:h-6 rounded-full inline-flex items-center justify-center mr-2 text-xs sm:text-sm print-bg-blue print-text-blue print:border print:border-blue-900">2</span> 
               Term II Performance
             </h3>
-            <div class="overflow-hidden rounded-lg border border-slate-300 print:border-2 print-border">
-              <table class="w-full text-sm border-collapse">
+            <div class="overflow-x-auto rounded-lg border border-slate-300 print:border-2 print-border">
+              <table class="w-full text-xs sm:text-sm border-collapse min-w-[450px]">
                 <thead class="bg-slate-100 print:bg-slate-100 border-b border-slate-300">
                   <tr>
-                    <th class="p-3 text-left font-bold text-slate-700 uppercase tracking-wider border-r border-slate-300">Subjects</th>
-                    <th class="p-3 text-center font-bold text-slate-700 uppercase tracking-wider border-r border-slate-300">Periodic Test 2</th>
-                    <th class="p-3 text-center font-bold text-slate-700 uppercase tracking-wider border-r border-slate-300">Annual Exam</th>
-                    <th class="p-3 text-center font-bold text-slate-700 uppercase tracking-wider">Int. Assess 2</th>
+                    <th class="p-2 sm:p-3 text-left font-bold text-slate-700 uppercase tracking-wider border-r border-slate-300 whitespace-nowrap">Scholastic Areas</th>
+                    <th class="p-2 sm:p-3 text-center font-bold text-slate-700 uppercase tracking-wider border-r border-slate-300 whitespace-nowrap">Periodic Test 2</th>
+                    <th class="p-2 sm:p-3 text-center font-bold text-slate-700 uppercase tracking-wider border-r border-slate-300 whitespace-nowrap">Annual Exam</th>
+                    <th class="p-2 sm:p-3 text-center font-bold text-slate-700 uppercase tracking-wider whitespace-nowrap">Int. Assess 2</th>
                   </tr>
                 </thead>
                 <tbody id="rc-t2-body" class="divide-y divide-slate-200 font-medium text-slate-800"></tbody>
                 <tfoot>
                   <tr class="bg-slate-50 font-black text-[#004085] print-text-blue border-t-2 border-slate-300">
-                    <td class="p-3 uppercase tracking-wider border-r border-slate-300 text-right">Term 2 %</td>
-                    <td colspan="3" class="p-3 text-center text-lg" id="rc-t2-total"></td>
+                    <td class="p-2 sm:p-3 uppercase tracking-wider border-r border-slate-300 text-right text-[10px] sm:text-sm">Term 2 Total Score</td>
+                    <td colspan="3" class="p-2 sm:p-3 text-center text-base sm:text-lg" id="rc-t2-total"></td>
                   </tr>
                 </tfoot>
               </table>
@@ -296,15 +312,15 @@
         </div>
 
         <!-- Final Result Box -->
-        <div class="mt-10 bg-[#004085] text-white p-8 rounded-xl flex justify-around items-center shadow-lg print:bg-white print:text-blue-900 print-border border-4 border-[#004085]">
+        <div class="mt-8 sm:mt-10 bg-[#004085] text-white p-6 sm:p-8 rounded-xl flex flex-col sm:flex-row justify-around items-center gap-6 sm:gap-0 shadow-lg print:bg-white print:text-blue-900 print-border border-4 border-[#004085]">
           <div class="text-center">
-            <span class="block text-blue-200 text-sm font-bold uppercase tracking-widest print-text-blue mb-1">Overall Percentage</span>
-            <span id="rc-percentage" class="text-4xl font-black"></span>
+            <span class="block text-blue-200 text-xs sm:text-sm font-bold uppercase tracking-widest print-text-blue mb-1">Overall Percentage</span>
+            <span id="rc-percentage" class="text-3xl sm:text-4xl font-black"></span>
           </div>
-          <div class="h-16 w-0.5 bg-blue-700 print:bg-[#004085]"></div>
+          <div class="h-0.5 w-full sm:h-16 sm:w-0.5 bg-blue-700 print:bg-[#004085]"></div>
           <div class="text-center">
-            <span class="block text-blue-200 text-sm font-bold uppercase tracking-widest print-text-blue mb-1">Final Grade</span>
-            <span id="rc-grade" class="text-4xl font-black text-yellow-400 print:text-[#004085]"></span>
+            <span class="block text-blue-200 text-xs sm:text-sm font-bold uppercase tracking-widest print-text-blue mb-1">Final Grade</span>
+            <span id="rc-grade" class="text-3xl sm:text-4xl font-black text-yellow-400 print:text-[#004085]"></span>
           </div>
         </div>
         
@@ -314,21 +330,22 @@
             <div class="border-t-2 border-[#004085] pt-2 w-48 text-center">Principal</div>
         </div>
 
-        <div class="mt-10 text-center print:hidden">
-          <button onclick="window.print()" class="bg-[#004085] text-white px-8 py-3 rounded-full shadow-lg hover:bg-blue-800 hover:shadow-xl transition font-black uppercase tracking-widest flex items-center justify-center mx-auto gap-2">
+        <div class="mt-8 sm:mt-10 text-center print:hidden">
+          <button onclick="window.print()" class="w-full sm:w-auto bg-[#004085] text-white px-6 sm:px-8 py-3.5 sm:py-3 rounded-full shadow-lg hover:bg-blue-800 hover:shadow-xl transition font-black uppercase tracking-widest flex items-center justify-center mx-auto gap-2 text-xs sm:text-sm">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
             Print Official Report Card
           </button>
         </div>
       </div>
     </div>
+     <!-- Bottom Left Footer -->
+    <footer>
+    <div class="footer-content">
+        © 2025 DAV Public School NTPC Township, Jamthal | Powered by IT Department
+    </div>
+</footer>
   </div>
-
-  <!-- Bottom Left Footer -->
-  <footer class="absolute bottom-4 left-6 text-gray-500 font-semibold text-sm print:hidden">
-    Made with <span class="text-[#004085] mx-1 text-base">♥</span> by IT Department<Br> DAV Public School NTPC Township, Jamthal
-  </footer>
-
+  
   <script>
     // ==========================================
     // REPLACE THIS WITH YOUR DEPLOYED APP URL
@@ -417,7 +434,7 @@
         submitBtn.innerText = 'Search';
         
         if(navToggleBtn) {
-            navToggleBtn.innerHTML = `<svg class="w-5 h-5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> <span class="hidden sm:inline">Teacher Login</span>`;
+            navToggleBtn.innerHTML = `<svg class="w-6 h-6 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> <span class="hidden sm:inline">Teacher Login</span>`;
             navToggleBtn.onclick = function() { setLoginRole('teacher'); switchView('login-view'); };
             navToggleBtn.title = "Teacher Login";
         }
@@ -428,7 +445,7 @@
         submitBtn.innerText = 'Login';
         
         if(navToggleBtn) {
-            navToggleBtn.innerHTML = `<svg class="w-5 h-5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg> <span class="hidden sm:inline">Result View</span>`;
+            navToggleBtn.innerHTML = `<svg class="w-6 h-6 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg> <span class="hidden sm:inline">Result View</span>`;
             navToggleBtn.onclick = function() { setLoginRole('student'); switchView('login-view'); };
             navToggleBtn.title = "Result View";
         }
@@ -497,7 +514,7 @@
         const tbody = document.getElementById('student-list');
         
         if(!filterVal) {
-            tbody.innerHTML = '<tr><td colspan="4" class="text-center py-12 text-gray-500 font-medium bg-slate-50 border border-dashed border-gray-300 rounded-lg">Please select a class from the dropdown above to view students.</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="4" class="text-center py-12 text-gray-500 font-medium bg-slate-50 border border-dashed border-gray-300 rounded-lg text-sm sm:text-base px-4">Please select a class from the dropdown above to view students.</td></tr>';
             return;
         }
         
@@ -516,13 +533,13 @@
       
       students.forEach(st => {
         const tr = document.createElement('tr');
-        tr.className = "hover:bg-blue-50 transition duration-150";
+        tr.className = "hover:bg-blue-50 transition duration-150 border-b border-gray-100 sm:border-none";
         tr.innerHTML = `
-          <td class="py-4 px-6 text-left whitespace-nowrap font-black text-gray-800">${st.rollNo}</td>
-          <td class="py-4 px-6 text-left font-bold text-[#004085]">${st.name}</td>
-          <td class="py-4 px-6 text-left"><span class="bg-blue-100 border border-blue-200 text-blue-800 py-1 px-3 rounded-md text-xs font-bold uppercase tracking-wider">${st.className}</span></td>
-          <td class="py-4 px-6 text-center">
-            <button onclick="openEditModal('${st.sheetName}', ${st.rowIndex}, '${st.name}', '${st.rollNo}')" class="bg-white border-2 border-[#004085] text-[#004085] px-5 py-1.5 rounded-md shadow-sm hover:bg-[#004085] hover:text-white transition duration-200 text-xs font-black uppercase tracking-wider">Update Marks</button>
+          <td class="py-3 sm:py-4 px-4 sm:px-6 text-left whitespace-nowrap font-black text-gray-800">${st.rollNo}</td>
+          <td class="py-3 sm:py-4 px-4 sm:px-6 text-left font-bold text-[#004085] whitespace-nowrap">${st.name}</td>
+          <td class="py-3 sm:py-4 px-4 sm:px-6 text-left"><span class="bg-blue-100 border border-blue-200 text-blue-800 py-1 px-2 sm:px-3 rounded-md text-[10px] sm:text-xs font-bold uppercase tracking-wider whitespace-nowrap">${st.className}</span></td>
+          <td class="py-3 sm:py-4 px-4 sm:px-6 text-center">
+            <button onclick="openEditModal('${st.sheetName}', ${st.rowIndex}, '${st.name}', '${st.rollNo}')" class="bg-white border-2 border-[#004085] text-[#004085] px-3 sm:px-5 py-1 sm:py-1.5 rounded-md shadow-sm hover:bg-[#004085] hover:text-white transition duration-200 text-[10px] sm:text-xs font-black uppercase tracking-wider whitespace-nowrap">Update Marks</button>
           </td>
         `;
         tbody.appendChild(tr);
@@ -553,17 +570,17 @@
         if (sub.id === 'san' && hideSanskrit) return;
         
         t1Body.innerHTML += `<tr>
-          <td class="py-3 px-2 font-bold text-slate-700">${sub.name}</td>
-          <td class="py-2 px-1"><input type="number" id="t1_pt1_${sub.id}" class="w-full max-w-[5rem] mx-auto block p-2 border border-slate-300 rounded text-center outline-none focus:ring-2 focus:ring-[#004085] font-semibold bg-white"></td>
-          <td class="py-2 px-1"><input type="number" id="t1_hy_${sub.id}" class="w-full max-w-[5rem] mx-auto block p-2 border border-slate-300 rounded text-center outline-none focus:ring-2 focus:ring-[#004085] font-semibold bg-white"></td>
-          <td class="py-2 px-1"><input type="number" id="t1_ia1_${sub.id}" class="w-full max-w-[5rem] mx-auto block p-2 border border-slate-300 rounded text-center outline-none focus:ring-2 focus:ring-[#004085] font-semibold bg-white"></td>
+          <td class="py-2 sm:py-3 px-1 sm:px-2 font-bold text-slate-700">${sub.name}</td>
+          <td class="py-1.5 sm:py-2 px-1"><input type="number" id="t1_pt1_${sub.id}" class="w-full min-w-[50px] max-w-[5rem] mx-auto block p-1.5 sm:p-2 border border-slate-300 rounded text-center outline-none focus:ring-2 focus:ring-[#004085] font-semibold bg-white text-xs sm:text-sm"></td>
+          <td class="py-1.5 sm:py-2 px-1"><input type="number" id="t1_hy_${sub.id}" class="w-full min-w-[50px] max-w-[5rem] mx-auto block p-1.5 sm:p-2 border border-slate-300 rounded text-center outline-none focus:ring-2 focus:ring-[#004085] font-semibold bg-white text-xs sm:text-sm"></td>
+          <td class="py-1.5 sm:py-2 px-1"><input type="number" id="t1_ia1_${sub.id}" class="w-full min-w-[50px] max-w-[5rem] mx-auto block p-1.5 sm:p-2 border border-slate-300 rounded text-center outline-none focus:ring-2 focus:ring-[#004085] font-semibold bg-white text-xs sm:text-sm"></td>
         </tr>`;
         
         t2Body.innerHTML += `<tr>
-          <td class="py-3 px-2 font-bold text-slate-700">${sub.name}</td>
-          <td class="py-2 px-1"><input type="number" id="t2_pt2_${sub.id}" class="w-full max-w-[5rem] mx-auto block p-2 border border-slate-300 rounded text-center outline-none focus:ring-2 focus:ring-[#004085] font-semibold bg-white"></td>
-          <td class="py-2 px-1"><input type="number" id="t2_ae_${sub.id}" class="w-full max-w-[5rem] mx-auto block p-2 border border-slate-300 rounded text-center outline-none focus:ring-2 focus:ring-[#004085] font-semibold bg-white"></td>
-          <td class="py-2 px-1"><input type="number" id="t2_ia2_${sub.id}" class="w-full max-w-[5rem] mx-auto block p-2 border border-slate-300 rounded text-center outline-none focus:ring-2 focus:ring-[#004085] font-semibold bg-white"></td>
+          <td class="py-2 sm:py-3 px-1 sm:px-2 font-bold text-slate-700">${sub.name}</td>
+          <td class="py-1.5 sm:py-2 px-1"><input type="number" id="t2_pt2_${sub.id}" class="w-full min-w-[50px] max-w-[5rem] mx-auto block p-1.5 sm:p-2 border border-slate-300 rounded text-center outline-none focus:ring-2 focus:ring-[#004085] font-semibold bg-white text-xs sm:text-sm"></td>
+          <td class="py-1.5 sm:py-2 px-1"><input type="number" id="t2_ae_${sub.id}" class="w-full min-w-[50px] max-w-[5rem] mx-auto block p-1.5 sm:p-2 border border-slate-300 rounded text-center outline-none focus:ring-2 focus:ring-[#004085] font-semibold bg-white text-xs sm:text-sm"></td>
+          <td class="py-1.5 sm:py-2 px-1"><input type="number" id="t2_ia2_${sub.id}" class="w-full min-w-[50px] max-w-[5rem] mx-auto block p-1.5 sm:p-2 border border-slate-300 rounded text-center outline-none focus:ring-2 focus:ring-[#004085] font-semibold bg-white text-xs sm:text-sm"></td>
         </tr>`;
       });
 
@@ -659,19 +676,19 @@
 
         t1Body.innerHTML += `
           <tr class="hover:bg-slate-50 transition border-b border-slate-200">
-            <td class="p-3 border-r border-slate-300 font-bold text-slate-800">${sub.name}</td>
-            <td class="p-3 border-r border-slate-300 text-center font-semibold">${data[`t1_pt1_${sub.id}`] || '-'}</td>
-            <td class="p-3 border-r border-slate-300 text-center font-semibold">${data[`t1_hy_${sub.id}`] || '-'}</td>
-            <td class="p-3 text-center font-semibold">${data[`t1_ia1_${sub.id}`] || '-'}</td>
+            <td class="p-2 sm:p-3 border-r border-slate-300 font-bold text-slate-800 whitespace-nowrap">${sub.name}</td>
+            <td class="p-2 sm:p-3 border-r border-slate-300 text-center font-semibold">${data[`t1_pt1_${sub.id}`] || '-'}</td>
+            <td class="p-2 sm:p-3 border-r border-slate-300 text-center font-semibold">${data[`t1_hy_${sub.id}`] || '-'}</td>
+            <td class="p-2 sm:p-3 text-center font-semibold">${data[`t1_ia1_${sub.id}`] || '-'}</td>
           </tr>
         `;
 
         t2Body.innerHTML += `
           <tr class="hover:bg-slate-50 transition border-b border-slate-200">
-            <td class="p-3 border-r border-slate-300 font-bold text-slate-800">${sub.name}</td>
-            <td class="p-3 border-r border-slate-300 text-center font-semibold">${data[`t2_pt2_${sub.id}`] || '-'}</td>
-            <td class="p-3 border-r border-slate-300 text-center font-semibold">${data[`t2_ae_${sub.id}`] || '-'}</td>
-            <td class="p-3 text-center font-semibold">${data[`t2_ia2_${sub.id}`] || '-'}</td>
+            <td class="p-2 sm:p-3 border-r border-slate-300 font-bold text-slate-800 whitespace-nowrap">${sub.name}</td>
+            <td class="p-2 sm:p-3 border-r border-slate-300 text-center font-semibold">${data[`t2_pt2_${sub.id}`] || '-'}</td>
+            <td class="p-2 sm:p-3 border-r border-slate-300 text-center font-semibold">${data[`t2_ae_${sub.id}`] || '-'}</td>
+            <td class="p-2 sm:p-3 text-center font-semibold">${data[`t2_ia2_${sub.id}`] || '-'}</td>
           </tr>
         `;
       });
